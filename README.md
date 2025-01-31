@@ -26,33 +26,22 @@ Ingresar a la página de la herramienta y entender:
 ### CREAR UN PROYECTO CON MAVEN
 Buscar cómo se crea un proyecto maven con ayuda de los arquetipos (archetypes).
 
-![alt text](images/creacion.proyecto.png)
-
-Busque cómo ejecutar desde línea de comandos el objetivo "generate" del plugin "archetype", con los siguientes parámetros:
+Se uso la siguiente configuracion para crearlo:
 ```yml
 ProjectId: org.apache.maven.archetypes:maven-archetype-quickstart:1.0
 Id del Grupo: edu.eci.cvds
 Id del Artefacto: Patterns
 Paquete: edu.eci.cvds.patterns.archetype
 ```
+Siguiendo dicha configuracion se creo el proyecto de la siguiente forma:
 
-Se debió haber creado en el directorio, un nuevo proyecto `Patterns` a partir de un modelo o arquetipo, que crea un conjunto de directorios con un conjunto de archivos básicos.
+![alt text](images/creacion.proyecto.png)
 
-Cambie al directorio `Patterns`:
-```sh
-$ cd Patterns
-```
+La estructura del proyecto recien creado es el siguiente es el siguiente:
 
-Para ver el conjunto de archivos y directorios creados por el comando `mvn` ejecute el comando `tree`.
-```sh
-$ tree
-```
-![alt text](tree.png)
+![alt text](images/tree.png)
 
-En caso de que no funcione en git bash, otra herramienta que se puede usar es PowerShell ya que ésta maneja el comando "tree".
-
-En algunos sistemas operativos, este comando no funciona correctamente o puede requerir un parámetro (por ejemplo: `tree /f`). En caso que funcione, la
-salida muestra la estructura del proyecto, similar a como se muestra a continuación:
+Que es exactamente la misma del documento del laboratorio:
 ```sh
 .
 │ pom.xml
@@ -87,6 +76,8 @@ dependencias:
   <maven.compiler.source>1.8</maven.compiler.source>
 </properties>
 ```
+Se agregó de la siguiente forma:
+
 ![alt text](images/version.java.png)
 
 ## COMPILAR Y EJECUTAR
@@ -94,35 +85,38 @@ Para compilar ejecute el comando:
 ```sh
 $ mvn package
 ```
+Se hizo del comando package para compilar el proyecto:
+
 ![alt text](images/package.png)
 
-Si maven no actualiza las dependencias utilice la opción `-U` así:
-```sh
-$ mvn -U package
+Para ejecutarlo primero se hicieron algunos ajustes en el pom.xml:
+Se especificó la ruta del main de la siguiente forma:
+
+![alt text](images/ruta.ejecutar.png)
+
+De esta manera se redujo conciderablemente el comando de ejecucion, el comando es el siguiente:
+```cmd
+mvn exec:java
 ```
+La ejecucion se muestra en la siguiente imagen:
+
 ![alt text](images/ejecutar.png)
 
-Busque cuál es el objetivo del parámetro "package" y qué otros parámetros se podrían enviar al comando `mvn`.
+Para realizar el cambio del mensaje, primero se modificó él .java de la siguiente forma:
 
-Busque cómo ejecutar desde línea de comandos, un proyecto maven y verifique la salida cuando se ejecuta con la clase `App.java` como parámetro en "mainClass". Tip: https://www.mojohaus.org/exec-maven-plugin/usage.html
+![alt text](images/cambio.java.png)
 
-Realice el cambio en la clase `App.java` para crear un saludo personalizado, basado en los parámetros de entrada a la aplicación. 
+Ahora probamos la ejecucion con un mensaje personalizado:
 
-![alt text](images/cambio.mensaje.png)
+![alt text](images/helloJIJIJAJA.png)
 
-Utilizar la primera posición del parámetro que llega al método "main" para realizar elsaludo personalizado, en caso que no sea posible, se debe mantener el saludo como se encuentra actualmente:
+Para que el mensaje tenga más de una palabra es necesario modificar él .java de la siguiente forma:
 
-Buscar cómo enviar parámetros al plugin "exec".
+![alt text](images/mensajeBueno.png)
 
-Ejecutar nuevamente la clase desde línea de comandos y verificar la salida: Hello World!
+Ahora probamos la ejecucion con un mensaje personalizado:
 
-Ejecutar la clase desde línea de comandos enviando su nombre como parámetro y verificar la salida. Ej: Hello Pepito!
-
-Ejecutar la clase con su nombre y apellido como parámetro. ¿Qué sucedió?
-
-Verifique cómo enviar los parámetros de forma "compuesta" para que el saludo se realice con nombre y apellido.
-
-Ejecutar nuevamente y verificar la salida en consola. Ej: Hello Pepito Perez!
+![alt text](images/mensajePersonalizado.png)
 
 ## HACER EL ESQUELETO DE LA APLICACIÓN
 Cree el paquete `edu.eci.cvds.patterns.shapes` y el paquete `edu.eci.cvds.patterns.shapes.concrete`.
