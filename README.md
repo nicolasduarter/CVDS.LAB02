@@ -1,6 +1,7 @@
 #### TALLER 2
 #### NICOLAS ANDRES DUARTE RODRIGUEZ
 #### MIGUEL ANGEL VANEGAS CARDENAS
+#### Pair programing.
 ##### PATTERNS - FACTORY
 
 ## PRE-RREQUISITOS
@@ -121,6 +122,8 @@ Ahora probamos la ejecucion con un mensaje personalizado:
 ## HACER EL ESQUELETO DE LA APLICACIÓN
 Cree el paquete `edu.eci.cvds.patterns.shapes` y el paquete `edu.eci.cvds.patterns.shapes.concrete`.
 
+![alt text](images/paquetes.png)
+
 Cree una interfaz llamada `Shape.java` en el directorio `src/main/java/edu/eci/cvds/patterns/shapes` de la siguiente manera:
 ```java
 package edu.eci.cvds.patterns.shapes;
@@ -129,6 +132,7 @@ public interface Shape {
     public int getNumberOfEdges();
 }
 ```
+![alt text](images/shape.png)
 
 Cree una enumeración llamada `RegularShapeType.java` en el directorio `src/main/java/edu/eci/cvds/patterns/shapes` así:
 
@@ -143,10 +147,9 @@ public enum RegularShapeType {
 En el directorio `src/main/java/edu/eci/cvds/patterns/shapes/concrete` cree las diferentes clases (Triangle, Quadrilateral, Pentagon, Hexagon), que implementen la interfaz creada y retornen el número correspondiente de vértices que tiene la figura. 
 
 Siguiendo el ejemplo del triángulo:
+
 ```java
 package edu.eci.cvds.patterns.shapes.concrete;
-
-import edu.eci.cvds.patterns.shapes.Shape;
 
 public class Triangle implements Shape {
     public int getNumberOfEdges() {
@@ -154,6 +157,7 @@ public class Triangle implements Shape {
     }
 }
 ```
+![alt text](images/enum.png)
 
 Cree el archivo `ShapeMain.java` en el directorio `src/main/java/edu/eci/cvds/patterns/shapes` con el metodo main:
 ```java
@@ -185,10 +189,14 @@ public class ShapeMain {
   }
 }
 ```
+![alt text](images/main.png)
 
 Analice y asegúrese de entender cada una de las instrucciones que se encuentran en todas las clases que se crearon anteriormente. Cree el archivo `ShapeFactory.java` en el directorio `src/main/java/edu/eci/cvds/patterns/shapes` implementando el patrón fábrica (Hint: https://refactoring.guru/design-patterns/catalog), haciendo uso de la instrucción switch-case de Java y usando las enumeraciones.
 
 ¿Cuál fábrica hiciste? y ¿Cuál es mejor?
+- Hicimos la factory method, con una interfaz que contiene un metodo static que es el que se encarga de crear las figuras.
+- Depende los requerimientos, en este caso decidimos usar la factory method.
+
 - Simple Factory:
 
 ![imagen](https://github.com/PDSW-ECI/labs/assets/4140058/0788a0b7-a071-4b90-ac3f-5982289ff3b3)
@@ -200,14 +208,34 @@ Analice y asegúrese de entender cada una de las instrucciones que se encuentran
 
 ![imagen](https://github.com/PDSW-ECI/labs/assets/4140058/1c79a12b-21d4-46be-8f19-40f3b62b6af7)
 
+
 Ejecute múltiples veces la clase ShapeMain, usando el plugin exec de maven con los siguientes parámetros y verifique la salida en consola para cada una:
+
+- Primero hacemos el cambio en el pom y en el respectivo puglin:
+
+![alt text](images/cambioPuglin.png)
+
 - Sin parámetros
+
+![alt text](images/sinParametros.png)
+
 - Parámetro: qwerty
+
+![alt text](images/qwerty.png)
+
 - Parámetro: pentagon
+
+![alt text](images/Pentagon.png)
+
 - Parámetro: Hexagon
+
+![alt text](images/Hexagon.png)
 
 ¿Cuál(es) de las anteriores instrucciones se ejecutan y funcionan correctamente y por qué?
 
+- En el primero se lanzo uno de los dos errores, en el que se especificaba que era necesario algun parametro.
+- En el segundo y tercero se lanzo el otro error, ya que los parametros no eran validos.
+- En el cuarto se lanzo el mensaje especificando que se habia creado de manera correcta la figura.
 ## ENTREGAR
 - Se espera al menos que durante la sesión de laboratorio, se termine el ejercicio del saludo y haya un avance significativo del ejercicio de las figuras.
 Dentro del directorio del proyecto, cree un archivo de texto integrantes.txt con el nombre de los dos integrantes del taller.
